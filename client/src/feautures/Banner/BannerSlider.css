@@ -1,0 +1,36 @@
+/* feautures/banner/BannerSlider.css */
+.banner {
+    padding: 24px;
+    background: #02101f;
+    color: #fff;
+  }
+  
+  .banner__slide {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .banner__title {
+    font-size: 28px;
+    text-align: center;
+  }
+  
+  .banner__media {
+    width: 100%;
+    max-width: 800px;
+    border-radius: 12px;
+    object-fit: cover;
+  }
+  
+  /* адаптив под мобилки */
+  @media (max-width: 768px) {
+    .banner {
+      padding: 16px;
+    }
+  
+    .banner__title {
+      font-size: 22px;
+    }
+  }
