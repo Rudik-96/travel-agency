@@ -1,8 +1,11 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
 import "../../pages/HomePage/HomePage.css";
+import { useStore } from "../../app/providers/StoreProvider";
+import { observer } from "mobx-react-lite";
 
-export const Header: React.FC = () => {
+export const Header: React.FC = observer(() => {
+  const { authStore } = useStore();
   return (
     <header className="header">
       <div className="header__logo">Travel Agency</div>
@@ -24,10 +27,14 @@ export const Header: React.FC = () => {
         </NavLink>
       </nav>
       <div>
-        <NavLink to="/sign-in" className="nav-link">
-          Sign in
-        </NavLink>
+        {authStore.user ? (
+          authStore.user.email
+        ) : (
+          <NavLink to="/sign-in" className="nav-link">
+            Sign in
+          </NavLink>
+        )}
       </div>
     </header>
   );
-};
+})

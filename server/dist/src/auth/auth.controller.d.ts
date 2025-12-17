@@ -10,17 +10,17 @@ declare class LoginDto {
 export declare class AuthController {
     private readonly authService;
     constructor(authService: AuthService);
-    register(dto: RegisterDto): {
+    register(dto: RegisterDto): Promise<{
         id: number;
         email: string;
-    };
-    login(dto: LoginDto): {
+    }>;
+    login(dto: LoginDto): Promise<{
         user: {
             id: number;
             email: string;
         };
         accessToken: string;
-    };
+    }>;
     logout(): {
         success: boolean;
     };
