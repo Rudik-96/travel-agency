@@ -1,5 +1,5 @@
 import { AuthStore } from "../../feautures/Auth/authStore";
-import { BannerStore } from "../../feautures/Banner/bannerStore";
+import { BannerStore } from "../../feautures/Banner/BannerStore";
 
 export class RootStore {
   bannerStore: BannerStore;
