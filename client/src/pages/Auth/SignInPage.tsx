@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { observer } from "mobx-react-lite";
 import { useStore } from "../../app/providers/StoreProvider";
 import { useNavigate } from "react-router-dom";
@@ -16,11 +16,6 @@ export const SignInPage: React.FC = observer(() => {
     if (authStore.user) {
       navigate("/");
     }
-  };
-
-  const handleRegister = async (e: React.FormEvent) => {
-    e.preventDefault();
-    await authStore.register(email, password);
   };
 
   return authStore.user ? (
