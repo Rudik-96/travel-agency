@@ -7,17 +7,27 @@ export interface BannerPlaceInfoItem {
 }
 
 export interface BannerConfig {
+  id: number;
   imageUrl: string;
   placeName: string;
   placeInfo: BannerPlaceInfoItem[];
 }
 
+export interface BannerCreateInput {
+    imageUrl: string;
+    placeName: string;
+    placeInfo: BannerPlaceInfoItem[];
+  }
+
+  export interface BannerConfig extends BannerCreateInput {
+    id: number;
+  }
+
 @Injectable()
 export class BannerService {
   constructor(private readonly prisma: PrismaService) {}
-  private readonly banners: BannerConfig[] = [];
 
-  async create(config: BannerConfig): Promise<BannerConfig> {
+  async create(config: BannerCreateInput): Promise<BannerConfig> {
     const created = await this.prisma.banner.create({
       data: {
         imageUrl: config.imageUrl,
@@ -26,6 +36,7 @@ export class BannerService {
       },
     });
     return {
+      id: created.id,
       imageUrl: created.imageUrl,
       placeName: created.placeName,
       placeInfo: created.placeInfo as any,
@@ -37,9 +48,14 @@ export class BannerService {
       orderBy: { createdAt: "desc" },
     });
     return rows.map((b) => ({
+      id: b.id,
       imageUrl: b.imageUrl,
       placeName: b.placeName,
       placeInfo: b.placeInfo as any,
     }));
   }
+  async delete(id: number): Promise<void> {
+    await this.prisma.banner.delete({where: { id }})
+  }
+
 }

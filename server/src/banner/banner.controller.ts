@@ -1,4 +1,4 @@
-import { Body, Controller, Get, Post } from "@nestjs/common";
+import { Body, Controller, Delete, Get, ParseIntPipe, Post, Param } from "@nestjs/common";
 import { BannerService } from "./banner.service";
 import type { BannerConfig } from "./banner.service";
 import { CreateBannerDto } from "./banner.dto";
@@ -15,5 +15,10 @@ export class BannerController {
   @Post()
   create(@Body() body: CreateBannerDto): Promise<BannerConfig> {
     return this.bannerService.create(body);
+  }
+
+  @Delete(":id")
+  delete(@Param("id", ParseIntPipe)id: number): Promise<void> {
+    return this.bannerService.delete(id)
   }
 }

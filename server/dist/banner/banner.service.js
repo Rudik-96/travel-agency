@@ -17,7 +17,6 @@ let BannerService = class BannerService {
     constructor(prisma) {
         this.prisma = prisma;
     }
-    banners = [];
     async create(config) {
         const created = await this.prisma.banner.create({
             data: {
@@ -27,6 +26,7 @@ let BannerService = class BannerService {
             },
         });
         return {
+            id: created.id,
             imageUrl: created.imageUrl,
             placeName: created.placeName,
             placeInfo: created.placeInfo,
@@ -37,10 +37,14 @@ let BannerService = class BannerService {
             orderBy: { createdAt: "desc" },
         });
         return rows.map((b) => ({
+            id: b.id,
             imageUrl: b.imageUrl,
             placeName: b.placeName,
             placeInfo: b.placeInfo,
         }));
+    }
+    async delete(id) {
+        await this.prisma.banner.delete({ where: { id } });
     }
 };
 exports.BannerService = BannerService;

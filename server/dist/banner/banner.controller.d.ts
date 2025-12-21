@@ -6,4 +6,5 @@ export declare class BannerController {
     constructor(bannerService: BannerService);
     getAll(): Promise<BannerConfig[]>;
     create(body: CreateBannerDto): Promise<BannerConfig>;
+    delete(id: number): Promise<void>;
 }

@@ -27,6 +27,9 @@ let BannerController = class BannerController {
     create(body) {
         return this.bannerService.create(body);
     }
+    delete(id) {
+        return this.bannerService.delete(id);
+    }
 };
 exports.BannerController = BannerController;
 __decorate([
@@ -42,6 +45,13 @@ __decorate([
     __metadata("design:paramtypes", [banner_dto_1.CreateBannerDto]),
     __metadata("design:returntype", Promise)
 ], BannerController.prototype, "create", null);
+__decorate([
+    (0, common_1.Delete)(":id"),
+    __param(0, (0, common_1.Param)("id", common_1.ParseIntPipe)),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Number]),
+    __metadata("design:returntype", Promise)
+], BannerController.prototype, "delete", null);
 exports.BannerController = BannerController = __decorate([
     (0, common_1.Controller)("banner"),
     __metadata("design:paramtypes", [banner_service_1.BannerService])
