@@ -9,27 +9,26 @@ import { Autoplay, Pagination, Navigation } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
 import "swiper/css/navigation";
-import "./BannerSlider.css";
+import "./Slider.css";
 
-export const BannerSlider: React.FC = observer(() => {
-  const { bannerStore } = useStore();
+export const Slider: React.FC = observer(() => {
+  const { sliderStore } = useStore();
 
   return (
-    <section className="banner">
+    <section className="slider-slider">
       <Swiper
         modules={[Autoplay, Pagination, Navigation]}
         loop
-        autoplay={{ delay: 1000, disableOnInteraction: false }}
+        autoplay={{ delay: 2000, disableOnInteraction: false }}
         pagination={{ clickable: true }}
-        className="banner__swiper"
+        className="slider__swiper"
       >
-        {bannerStore.slides.map((slide) => (
+        {sliderStore.slides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <div className="banner__slide">
-              <h1 className="banner__title">{slide.title}</h1>
+            <div className="slider__slide">
               {slide.videoUrl ? (
                 <video
-                  className="banner__media"
+                  className="slider__media"
                   src={slide.videoUrl}
                   autoPlay
                   muted
@@ -38,7 +37,7 @@ export const BannerSlider: React.FC = observer(() => {
                 />
               ) : (
                 <img
-                  className="banner__media"
+                  className="slider__media"
                   src={slide.imageUrl}
                   alt={slide.title}
                 />

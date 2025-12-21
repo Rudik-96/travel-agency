@@ -1,14 +1,14 @@
 import { makeAutoObservable } from "mobx";
 
-export interface BannerSlide {
+export interface SliderSlide {
   id: number;
   title: string;
   imageUrl: string;
   videoUrl?: string;
 }
 
-export class BannerStore {
-  slides: BannerSlide[] = [
+export class SliderStore {
+  slides: SliderSlide[] = [
     {
       id: 1,
       title: "Explore Maldives",

@@ -1,0 +1,38 @@
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  background-color: #48cae4;
+  color: #3A245E;
+  font-weight: 300;
+  border: none;
+  font-size: 20px;
+  z-index: 9999;
+}
+
+.header__logo {
+  color: #3A245E;
+}
+
+.nav-link {
+  color: #3A245E;
+  transition: transform 0.3s cubic-bezier(0.075, 0.82, 0.165, 1),
+    color 1s ease-out;
+  text-decoration: none;
+}
+
+.nav-link:hover {
+  color: #ffffff;
+  transform: scale(1.4);
+}
+
+.header__nav {
+  display: flex;
+  gap: 70px;
+  font-family: "Inter", system-ui, -apple-system, sans-serif;
+}

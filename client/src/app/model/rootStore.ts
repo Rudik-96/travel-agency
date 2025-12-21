@@ -1,12 +1,12 @@
 import { AuthStore } from "../../feautures/Auth/authStore";
-import { BannerStore } from "../../feautures/Banner/BannerStore";
+import { SliderStore } from "../../feautures/Slider/SliderStore";
 
 export class RootStore {
-  bannerStore: BannerStore;
+  sliderStore: SliderStore;
   authStore: AuthStore;
 
   constructor() {
-    this.bannerStore = new BannerStore();
+    this.sliderStore = new SliderStore();
     this.authStore = new AuthStore()
   }
 }

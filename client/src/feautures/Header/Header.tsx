@@ -1,6 +1,8 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import "../../pages/HomePage/HomePage.css";
+
+import "./Header.css";
+
 import { useStore } from "../../app/providers/StoreProvider";
 import { observer } from "mobx-react-lite";
 
@@ -37,4 +39,4 @@ export const Header: React.FC = observer(() => {
       </div>
     </header>
   );
-})
+});
